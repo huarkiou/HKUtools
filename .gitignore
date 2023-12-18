@@ -1,0 +1,13 @@
+.xmake
+.vs*
+build
+out
+*.pdb
+CMakeSettings.json
+compile_commands.json
+vsxmake*
+doxygen
+__pycache__
+.DS_Store
+
+
