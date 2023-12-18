@@ -1,3 +1,4 @@
+set_xmakever("2.8.5")
 -- 设置工程名
 set_project("nozzle design")
 
@@ -29,5 +30,5 @@ target("hkutools")
     add_files("src/mainwindow.h")
     -- add_frameworks("QtGui")
     set_encodings("utf-8")
-    set_installdir("$(buildir)/install")
+    set_installdir("D:/apps/study/HKUtools/")
 target_end()

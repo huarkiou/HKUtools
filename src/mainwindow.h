@@ -17,10 +17,9 @@ class MainWindow : public QMainWindow {
     void initializeUI();
 
    private slots:
-    void changePage();
-    void aboutQt();
     void pushbutton_caculate_01_clicked();
     void pushbutton_caculate_02_clicked();
+    void pushbutton_caculate_03_clicked();
 
    private:
     Ui::MainWindowClass *ui;

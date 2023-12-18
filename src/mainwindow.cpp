@@ -4,6 +4,8 @@
 #include <cmath>
 #include <numbers>
 
+#include "qvalidator.h"
+
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     ui = new Ui::MainWindowClass();
@@ -14,46 +16,29 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 MainWindow::~MainWindow() {}
 
 void MainWindow::initializeUI() {
-    // set up menubar
-    connect(ui->action_01, SIGNAL(triggered(bool)), this, SLOT(changePage()));
-    connect(ui->action_02, SIGNAL(triggered(bool)), this, SLOT(changePage()));
-    connect(ui->actionAbout, SIGNAL(triggered(bool)), this, SLOT(aboutQt()));
-
     // set up page01
-    ui->lineEdit_velocity_01->setText("1.0");
     ui->lineEdit_velocity_01->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_density_01->setText("1.205");
     ui->lineEdit_density_01->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_viscosity_01->setText("1.82e-5");
     ui->lineEdit_viscosity_01->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_length_01->setText("1.0");
     ui->lineEdit_length_01->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_yplus_01->setText("1.0");
     ui->lineEdit_yplus_01->setValidator(new QDoubleValidator(this));
 
     connect(ui->pushButton_calculate_01, SIGNAL(clicked()), this, SLOT(pushbutton_caculate_01_clicked()));
 
     // set up page02
-    ui->lineEdit_mass_02->setText("1.0");
     ui->lineEdit_mass_02->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_stiffness_02->setText("100");
     ui->lineEdit_stiffness_02->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_damping_02->setText("0.1");
     ui->lineEdit_damping_02->setValidator(new QDoubleValidator(this));
 
     connect(ui->pushButton_calculate_02, SIGNAL(clicked()), this, SLOT(pushbutton_caculate_02_clicked()));
-}
 
-void MainWindow::changePage() {
-    QObject* sd = sender();
-    if (sd == ui->action_01) {
-        ui->stackedWidget->setCurrentIndex(0);
-    } else if (sd == ui->action_02) {
-        ui->stackedWidget->setCurrentIndex(1);
-    }
+    ui->lineEdit_gamma_03->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_Rg_03->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_Ma_03->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_T_total_03->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_p_total_03->setValidator(new QDoubleValidator(this));
+    connect(ui->pushButton_calculate_03, SIGNAL(clicked()), this, SLOT(pushbutton_caculate_03_clicked()));
 }
-
-void MainWindow::aboutQt() { qApp->aboutQt(); }
 
 void MainWindow::pushbutton_caculate_01_clicked() {
     // input
@@ -93,4 +78,24 @@ void MainWindow::pushbutton_caculate_02_clicked() {
     ui->lineEdit_period_02->setText(QString::number(period, 'g', 6));
     ui->lineEdit_circlefrequency_02->setText(QString::number(circle_frequency, 'g', 6));
     ui->lineEdit_dampingratio_02->setText(QString::number(damping_ratio, 'g', 6));
+}
+
+void MainWindow::pushbutton_caculate_03_clicked() {
+    // input
+    double gamma = ui->lineEdit_gamma_03->text().toDouble();
+    double Rg = ui->lineEdit_Rg_03->text().toDouble();
+    double Ma = ui->lineEdit_Ma_03->text().toDouble();
+    double T_total = ui->lineEdit_T_total_03->text().toDouble();
+    double p_total = ui->lineEdit_p_total_03->text().toDouble();
+
+    // calculate
+    double T_static = T_total / (1 + (gamma - 1.) / 2. * Ma * Ma);
+    double p_static = p_total / std::pow(1 + (gamma - 1.) / 2. * Ma * Ma, gamma / (gamma - 1.));
+    double soundspeed = std::sqrt(gamma * Rg * T_static);
+    double velocity = Ma * soundspeed;
+    // output
+    ui->lineEdit_T_static_03->setText(QString::number(T_static, 'g', 6));
+    ui->lineEdit_p_static_03->setText(QString::number(p_static, 'g', 6));
+    ui->lineEdit_soundspeed_03->setText(QString::number(soundspeed, 'g', 6));
+    ui->lineEdit_velocity_03->setText(QString::number(velocity, 'g', 6));
 }
