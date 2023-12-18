@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     ui = new Ui::MainWindowClass();
     ui->setupUi(this);
     initializeUI();
+    precision = 9;
 }
 
 MainWindow::~MainWindow() {}
@@ -57,8 +58,8 @@ void MainWindow::pushbutton_caculate_01_clicked() {
     y1 = yplus * medium_viciosity / Ur / medium_density;
 
     // output
-    ui->lineEdit_Re_01->setText(QString::number(Re, 'g', 6));
-    ui->lineEdit_y1_01->setText(QString::number(y1, 'g', 6));
+    ui->lineEdit_Re_01->setText(QString::number(Re, 'g', precision));
+    ui->lineEdit_y1_01->setText(QString::number(y1, 'g', precision));
 }
 
 void MainWindow::pushbutton_caculate_02_clicked() {
@@ -74,10 +75,10 @@ void MainWindow::pushbutton_caculate_02_clicked() {
     double period = 1.0 / natural_frequency;
 
     // output
-    ui->lineEdit_naturalfrequency_02->setText(QString::number(natural_frequency, 'g', 6));
-    ui->lineEdit_period_02->setText(QString::number(period, 'g', 6));
-    ui->lineEdit_circlefrequency_02->setText(QString::number(circle_frequency, 'g', 6));
-    ui->lineEdit_dampingratio_02->setText(QString::number(damping_ratio, 'g', 6));
+    ui->lineEdit_naturalfrequency_02->setText(QString::number(natural_frequency, 'g', precision));
+    ui->lineEdit_period_02->setText(QString::number(period, 'g', precision));
+    ui->lineEdit_circlefrequency_02->setText(QString::number(circle_frequency, 'g', precision));
+    ui->lineEdit_dampingratio_02->setText(QString::number(damping_ratio, 'g', precision));
 }
 
 void MainWindow::pushbutton_caculate_03_clicked() {
@@ -94,8 +95,8 @@ void MainWindow::pushbutton_caculate_03_clicked() {
     double soundspeed = std::sqrt(gamma * Rg * T_static);
     double velocity = Ma * soundspeed;
     // output
-    ui->lineEdit_T_static_03->setText(QString::number(T_static, 'g', 6));
-    ui->lineEdit_p_static_03->setText(QString::number(p_static, 'g', 6));
-    ui->lineEdit_soundspeed_03->setText(QString::number(soundspeed, 'g', 6));
-    ui->lineEdit_velocity_03->setText(QString::number(velocity, 'g', 6));
+    ui->lineEdit_T_static_03->setText(QString::number(T_static, 'g', precision));
+    ui->lineEdit_p_static_03->setText(QString::number(p_static, 'g', precision));
+    ui->lineEdit_soundspeed_03->setText(QString::number(soundspeed, 'g', precision));
+    ui->lineEdit_velocity_03->setText(QString::number(velocity, 'g', precision));
 }

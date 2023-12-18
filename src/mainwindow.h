@@ -23,6 +23,7 @@ class MainWindow : public QMainWindow {
 
    private:
     Ui::MainWindowClass *ui;
+    int precision;
 };
 
 #endif
