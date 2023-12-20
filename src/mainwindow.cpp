@@ -4,6 +4,7 @@
 #include <cmath>
 #include <numbers>
 
+#include "qpushbutton.h"
 #include "qvalidator.h"
 
 
@@ -23,22 +24,20 @@ void MainWindow::initializeUI() {
     ui->lineEdit_viscosity_01->setValidator(new QDoubleValidator(this));
     ui->lineEdit_length_01->setValidator(new QDoubleValidator(this));
     ui->lineEdit_yplus_01->setValidator(new QDoubleValidator(this));
-
-    connect(ui->pushButton_calculate_01, SIGNAL(clicked()), this, SLOT(pushbutton_caculate_01_clicked()));
+    connect(ui->pushButton_calculate_01, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_01_clicked);
 
     // set up page02
     ui->lineEdit_mass_02->setValidator(new QDoubleValidator(this));
     ui->lineEdit_stiffness_02->setValidator(new QDoubleValidator(this));
     ui->lineEdit_damping_02->setValidator(new QDoubleValidator(this));
-
-    connect(ui->pushButton_calculate_02, SIGNAL(clicked()), this, SLOT(pushbutton_caculate_02_clicked()));
+    connect(ui->pushButton_calculate_02, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_02_clicked);
 
     ui->lineEdit_gamma_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_Rg_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_Ma_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_T_total_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_p_total_03->setValidator(new QDoubleValidator(this));
-    connect(ui->pushButton_calculate_03, SIGNAL(clicked()), this, SLOT(pushbutton_caculate_03_clicked()));
+    connect(ui->pushButton_calculate_03, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_03_clicked);
 }
 
 void MainWindow::pushbutton_caculate_01_clicked() {
