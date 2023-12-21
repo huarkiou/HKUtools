@@ -26,10 +26,21 @@ void MainWindow::initializeUI() {
     connect(ui->pushButton_calculate_01, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_01_clicked);
 
     // set up page02
-    ui->lineEdit_mass_02->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_stiffness_02->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_damping_02->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_mass_input_02->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_stiffness_input_02->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_damping_input_02->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_mass_displaced_02->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_mass_output_02->setValidator(new QDoubleValidator(this));
 
+    connect(ui->comboBox_mass_input_02, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int i) {
+        this->ui->label_mass_output_02->setText(qobject_cast<QComboBox*>(sender())->itemText(!i));
+    });
+    connect(ui->comboBox_damping_input_02, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int i) {
+        this->ui->label_damping_output_02->setText(qobject_cast<QComboBox*>(sender())->itemText(!i));
+    });
+    connect(ui->comboBox_stiffness_input_02, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int i) {
+        this->ui->label_stiffness_output_02->setText(qobject_cast<QComboBox*>(sender())->itemText(!i));
+    });
     connect(ui->pushButton_calculate_02, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_02_clicked);
 
     // set up page03
@@ -43,9 +54,9 @@ void MainWindow::initializeUI() {
     ui->label_T_output_03->setText(ui->comboBox_T_input_03->itemText(!ui->comboBox_T_input_03->currentIndex()));
 
     connect(ui->comboBox_p_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
-            &MainWindow::comboBox_pressure_03_change);
+            [this](int i) { this->ui->label_p_output_03->setText(qobject_cast<QComboBox*>(sender())->itemText(!i)); });
     connect(ui->comboBox_T_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
-            &MainWindow::comboBox_temperature_03_change);
+            [this](int i) { this->ui->label_T_output_03->setText(qobject_cast<QComboBox*>(sender())->itemText(!i)); });
     connect(ui->pushButton_calculate_03, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_03_clicked);
 }
 
@@ -72,29 +83,53 @@ void MainWindow::pushbutton_caculate_01_clicked() {
 
 void MainWindow::pushbutton_caculate_02_clicked() {
     // input
-    double mass = ui->lineEdit_mass_02->text().toDouble();
-    double stiffness = ui->lineEdit_stiffness_02->text().toDouble();
-    double damping = ui->lineEdit_damping_02->text().toDouble();
+    double mass_input = ui->lineEdit_mass_input_02->text().toDouble();
+    double mass_displaced = ui->lineEdit_mass_displaced_02->text().toDouble();
+    double mass = 0., mass_ratio = 0., mass_output = 0.;
+    if (ui->comboBox_mass_input_02->currentText().contains("*")) {
+        mass_ratio = mass_input;
+        mass = mass_ratio * mass_displaced;
+        mass_output = mass;
+    } else {
+        mass = mass_input;
+        mass_ratio = mass / mass_displaced;
+        mass_output = mass_ratio;
+    }
 
-    // calculate
-    double damping_ratio = damping / (2 * std::sqrt(stiffness * mass));
-    double circle_frequency = std::sqrt(stiffness / mass);
-    double natural_frequency = circle_frequency / 2.0 / std::numbers::pi;
-    double period = 1.0 / natural_frequency;
+    double stiffness_input = ui->lineEdit_stiffness_input_02->text().toDouble();
+    double stiffness = 0., circle_frequency = 0., frequency = 0., stiffness_output = 0.;
+    if (ui->comboBox_stiffness_input_02->currentText().contains("k")) {
+        stiffness = stiffness_input;
+        circle_frequency = std::sqrt(stiffness / mass);
+        frequency = circle_frequency / (2.0 * std::numbers::pi);
+        stiffness_output = frequency;
+    } else {
+        frequency = stiffness_input;
+        circle_frequency = frequency * 2.0 * std::numbers::pi;
+        stiffness = std::pow(circle_frequency, 2.) * mass;
+        stiffness_output = stiffness;
+    }
+
+    double damping_input = ui->lineEdit_damping_input_02->text().toDouble();
+    double damping = 0., damping_ratio = 0., damping_output = 0.;
+    if (ui->comboBox_damping_input_02->currentText().contains("c")) {
+        damping = damping_input;
+        damping_ratio = damping / (2 * std::sqrt(stiffness * mass));
+        damping_output = damping_ratio;
+    } else {
+        damping_ratio = damping_input;
+        damping = damping_ratio * (2 * std::sqrt(stiffness * mass));
+        damping_output = damping;
+    }
+
+    double period = 1.0 / frequency;
 
     // output
-    ui->lineEdit_naturalfrequency_02->setText(QString::number(natural_frequency, 'g', precision));
+    ui->lineEdit_mass_output_02->setText(QString::number(mass_output, 'g', precision));
+    ui->lineEdit_damping_output_02->setText(QString::number(damping_output, 'g', precision));
+    ui->lineEdit_stiffness_output_02->setText(QString::number(stiffness_output, 'g', precision));
     ui->lineEdit_period_02->setText(QString::number(period, 'g', precision));
     ui->lineEdit_circlefrequency_02->setText(QString::number(circle_frequency, 'g', precision));
-    ui->lineEdit_dampingratio_02->setText(QString::number(damping_ratio, 'g', precision));
-}
-
-void MainWindow::comboBox_pressure_03_change(int i) {
-    this->ui->label_p_output_03->setText(this->ui->comboBox_p_input_03->itemText(!i));
-}
-
-void MainWindow::comboBox_temperature_03_change(int i) {
-    this->ui->label_T_output_03->setText(this->ui->comboBox_T_input_03->itemText(!i));
 }
 
 void MainWindow::pushbutton_caculate_03_clicked() {

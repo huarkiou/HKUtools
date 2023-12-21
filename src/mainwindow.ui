@@ -279,10 +279,38 @@
         <string>f_n</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_02">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_mass_02">
+        <item row="11" column="1">
+         <widget class="QLineEdit" name="lineEdit_period_02">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QComboBox" name="comboBox_stiffness_input_02">
+          <item>
+           <property name="text">
+            <string>k [N/m]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>f_n [Hz]</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="lineEdit_mass_output_02">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="label_damping_output_02">
           <property name="text">
-           <string>m [kg]</string>
+           <string>ζ</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -292,63 +320,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_mass_02">
-          <property name="text">
-           <string>1.0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_stiffness_02">
-          <property name="text">
-           <string>k [N/m]</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_stiffness_02">
-          <property name="text">
-           <string>100.0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_damping_02">
-          <property name="text">
-           <string>c [N·s/m]</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_damping_02">
-          <property name="text">
-           <string>0.1</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1" alignment="Qt::AlignHCenter">
+        <item row="7" column="1" alignment="Qt::AlignHCenter">
          <widget class="QPushButton" name="pushButton_calculate_02">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -361,47 +333,7 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label_naturalfrequency_02">
-          <property name="text">
-           <string>f_n [Hz]</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit_naturalfrequency_02">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_period_02">
-          <property name="text">
-           <string>T [s]</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLineEdit" name="lineEdit_period_02">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
+        <item row="12" column="0">
          <widget class="QLabel" name="label_circlefrequency_02">
           <property name="text">
            <string>ω_n [rad/s]</string>
@@ -414,17 +346,10 @@
           </property>
          </widget>
         </item>
-        <item row="6" column="1">
-         <widget class="QLineEdit" name="lineEdit_circlefrequency_02">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0">
-         <widget class="QLabel" name="label_dampingratio_02">
+        <item row="10" column="0">
+         <widget class="QLabel" name="label_stiffness_output_02">
           <property name="text">
-           <string>ζ</string>
+           <string>f_n [Hz]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -434,8 +359,123 @@
           </property>
          </widget>
         </item>
-        <item row="7" column="1">
-         <widget class="QLineEdit" name="lineEdit_dampingratio_02">
+        <item row="10" column="1">
+         <widget class="QLineEdit" name="lineEdit_stiffness_output_02">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_mass_output_02">
+          <property name="text">
+           <string>m*</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QComboBox" name="comboBox_mass_input_02">
+          <item>
+           <property name="text">
+            <string>m [kg]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>m*</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QComboBox" name="comboBox_damping_input_02">
+          <item>
+           <property name="text">
+            <string>c [N·s/m]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ζ</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="lineEdit_mass_displaced_02">
+          <property name="text">
+           <string>1.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QLineEdit" name="lineEdit_damping_output_02">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_damping_input_02">
+          <property name="text">
+           <string>0.1</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="lineEdit_stiffness_input_02">
+          <property name="text">
+           <string>100.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="1">
+         <widget class="QLineEdit" name="lineEdit_circlefrequency_02">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="0">
+         <widget class="QLabel" name="label_period_02">
+          <property name="text">
+           <string>T [s]</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::PlainText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEdit_mass_input_02">
+          <property name="text">
+           <string>1.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_mass_displaced_02">
+          <property name="text">
+           <string>m_d [kg]</string>
+          </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
@@ -673,7 +713,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>lineEdit_velocity_01</tabstop>
   <tabstop>lineEdit_density_01</tabstop>
   <tabstop>lineEdit_viscosity_01</tabstop>
   <tabstop>lineEdit_length_01</tabstop>
@@ -681,14 +720,18 @@
   <tabstop>pushButton_calculate_01</tabstop>
   <tabstop>lineEdit_Re_01</tabstop>
   <tabstop>lineEdit_y1_01</tabstop>
-  <tabstop>lineEdit_mass_02</tabstop>
-  <tabstop>lineEdit_stiffness_02</tabstop>
-  <tabstop>lineEdit_damping_02</tabstop>
+  <tabstop>lineEdit_mass_input_02</tabstop>
+  <tabstop>lineEdit_damping_input_02</tabstop>
+  <tabstop>lineEdit_stiffness_input_02</tabstop>
   <tabstop>pushButton_calculate_02</tabstop>
-  <tabstop>lineEdit_naturalfrequency_02</tabstop>
+  <tabstop>lineEdit_mass_output_02</tabstop>
+  <tabstop>lineEdit_damping_output_02</tabstop>
+  <tabstop>lineEdit_stiffness_output_02</tabstop>
   <tabstop>lineEdit_period_02</tabstop>
   <tabstop>lineEdit_circlefrequency_02</tabstop>
-  <tabstop>lineEdit_dampingratio_02</tabstop>
+  <tabstop>comboBox_mass_input_02</tabstop>
+  <tabstop>comboBox_damping_input_02</tabstop>
+  <tabstop>comboBox_stiffness_input_02</tabstop>
   <tabstop>lineEdit_gamma_03</tabstop>
   <tabstop>lineEdit_Rg_03</tabstop>
   <tabstop>lineEdit_Ma_03</tabstop>
@@ -699,7 +742,10 @@
   <tabstop>lineEdit_velocity_03</tabstop>
   <tabstop>lineEdit_T_output_03</tabstop>
   <tabstop>lineEdit_p_output_03</tabstop>
+  <tabstop>comboBox_T_input_03</tabstop>
+  <tabstop>comboBox_p_input_03</tabstop>
   <tabstop>tabWidget</tabstop>
+  <tabstop>lineEdit_velocity_01</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/mainwindow.qrc"/>
