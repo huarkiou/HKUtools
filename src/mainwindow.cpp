@@ -36,15 +36,15 @@ void MainWindow::initializeUI() {
     ui->lineEdit_gamma_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_Rg_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_Ma_03->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_T_total_03->setValidator(new QDoubleValidator(this));
-    ui->lineEdit_p_total_03->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_T_input_03->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_p_input_03->setValidator(new QDoubleValidator(this));
 
-    ui->label_p_static_03->setText(ui->comboBox_pressure_03->itemText(!ui->comboBox_pressure_03->currentIndex()));
-    ui->label_T_static_03->setText(ui->comboBox_temperature_03->itemText(!ui->comboBox_temperature_03->currentIndex()));
+    ui->label_p_output_03->setText(ui->comboBox_p_input_03->itemText(!ui->comboBox_p_input_03->currentIndex()));
+    ui->label_T_output_03->setText(ui->comboBox_T_input_03->itemText(!ui->comboBox_T_input_03->currentIndex()));
 
-    connect(ui->comboBox_pressure_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+    connect(ui->comboBox_p_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
             &MainWindow::comboBox_pressure_03_change);
-    connect(ui->comboBox_temperature_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+    connect(ui->comboBox_T_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
             &MainWindow::comboBox_temperature_03_change);
     connect(ui->pushButton_calculate_03, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_03_clicked);
 }
@@ -90,11 +90,11 @@ void MainWindow::pushbutton_caculate_02_clicked() {
 }
 
 void MainWindow::comboBox_pressure_03_change(int i) {
-    this->ui->label_p_static_03->setText(this->ui->comboBox_pressure_03->itemText(!i));
+    this->ui->label_p_output_03->setText(this->ui->comboBox_p_input_03->itemText(!i));
 }
 
 void MainWindow::comboBox_temperature_03_change(int i) {
-    this->ui->label_T_static_03->setText(this->ui->comboBox_temperature_03->itemText(!i));
+    this->ui->label_T_output_03->setText(this->ui->comboBox_T_input_03->itemText(!i));
 }
 
 void MainWindow::pushbutton_caculate_03_clicked() {
@@ -103,9 +103,9 @@ void MainWindow::pushbutton_caculate_03_clicked() {
     double Rg = ui->lineEdit_Rg_03->text().toDouble();
     double Ma = ui->lineEdit_Ma_03->text().toDouble();
 
-    double T_input = ui->lineEdit_T_total_03->text().toDouble();
+    double T_input = ui->lineEdit_T_input_03->text().toDouble();
     double T_static = 0., T_total = 0., T_output = 0.;
-    if (ui->comboBox_temperature_03->currentText().contains("total")) {
+    if (ui->comboBox_T_input_03->currentText().contains("total")) {
         T_total = T_input;
         T_static = T_total / (1 + (gamma - 1.) / 2. * Ma * Ma);
         T_output = T_static;
@@ -114,11 +114,11 @@ void MainWindow::pushbutton_caculate_03_clicked() {
         T_total = T_static * (1 + (gamma - 1.) / 2. * Ma * Ma);
         T_output = T_total;
     }
-    ui->lineEdit_T_static_03->setText(QString::number(T_output, 'g', precision));
+    ui->lineEdit_T_output_03->setText(QString::number(T_output, 'g', precision));
 
-    double p_input = ui->lineEdit_p_total_03->text().toDouble();
+    double p_input = ui->lineEdit_p_input_03->text().toDouble();
     double p_static = 0., p_total = 0., p_output = 0.;
-    if (ui->comboBox_pressure_03->currentText().contains("total")) {
+    if (ui->comboBox_p_input_03->currentText().contains("total")) {
         p_total = p_input;
         p_static = p_total / std::pow(1 + (gamma - 1.) / 2. * Ma * Ma, gamma / (gamma - 1.));
         p_output = p_static;
@@ -127,7 +127,7 @@ void MainWindow::pushbutton_caculate_03_clicked() {
         p_total = p_static * std::pow(1 + (gamma - 1.) / 2. * Ma * Ma, gamma / (gamma - 1.));
         p_output = p_total;
     }
-    ui->lineEdit_p_static_03->setText(QString::number(p_output, 'g', precision));
+    ui->lineEdit_p_output_03->setText(QString::number(p_output, 'g', precision));
 
     double soundspeed = std::sqrt(gamma * Rg * T_static);
     ui->lineEdit_soundspeed_03->setText(QString::number(soundspeed, 'g', precision));

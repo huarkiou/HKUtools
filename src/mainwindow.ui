@@ -485,7 +485,7 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit_p_total_03">
+         <widget class="QLineEdit" name="lineEdit_p_input_03">
           <property name="text">
            <string>101325.0</string>
           </property>
@@ -505,7 +505,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_T_total_03">
+         <widget class="QLineEdit" name="lineEdit_T_input_03">
           <property name="text">
            <string>273.15</string>
           </property>
@@ -525,14 +525,14 @@
          </widget>
         </item>
         <item row="9" column="1">
-         <widget class="QLineEdit" name="lineEdit_T_static_03">
+         <widget class="QLineEdit" name="lineEdit_T_output_03">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item row="9" column="0">
-         <widget class="QLabel" name="label_T_static_03">
+         <widget class="QLabel" name="label_T_output_03">
           <property name="text">
            <string>T [K]</string>
           </property>
@@ -545,7 +545,7 @@
          </widget>
         </item>
         <item row="10" column="0">
-         <widget class="QLabel" name="label_p_static_03">
+         <widget class="QLabel" name="label_p_output_03">
           <property name="text">
            <string>p [Pa]</string>
           </property>
@@ -581,7 +581,7 @@
          </widget>
         </item>
         <item row="10" column="1">
-         <widget class="QLineEdit" name="lineEdit_p_static_03">
+         <widget class="QLineEdit" name="lineEdit_p_output_03">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
@@ -637,7 +637,7 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QComboBox" name="comboBox_temperature_03">
+         <widget class="QComboBox" name="comboBox_T_input_03">
           <item>
            <property name="text">
             <string>T total [K]</string>
@@ -651,7 +651,7 @@
          </widget>
         </item>
         <item row="4" column="0">
-         <widget class="QComboBox" name="comboBox_pressure_03">
+         <widget class="QComboBox" name="comboBox_p_input_03">
           <item>
            <property name="text">
             <string>p total [Pa]</string>
@@ -692,13 +692,13 @@
   <tabstop>lineEdit_gamma_03</tabstop>
   <tabstop>lineEdit_Rg_03</tabstop>
   <tabstop>lineEdit_Ma_03</tabstop>
-  <tabstop>lineEdit_T_total_03</tabstop>
-  <tabstop>lineEdit_p_total_03</tabstop>
+  <tabstop>lineEdit_T_input_03</tabstop>
+  <tabstop>lineEdit_p_input_03</tabstop>
   <tabstop>pushButton_calculate_03</tabstop>
   <tabstop>lineEdit_soundspeed_03</tabstop>
   <tabstop>lineEdit_velocity_03</tabstop>
-  <tabstop>lineEdit_T_static_03</tabstop>
-  <tabstop>lineEdit_p_static_03</tabstop>
+  <tabstop>lineEdit_T_output_03</tabstop>
+  <tabstop>lineEdit_p_output_03</tabstop>
   <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources>
