@@ -83,7 +83,7 @@
            <enum>QFrame::NoFrame</enum>
           </property>
           <property name="text">
-           <string>v [m/s] :</string>
+           <string>v [m/s]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -106,7 +106,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_density_01">
           <property name="text">
-           <string>ρ [kg/m^3] :</string>
+           <string>ρ [kg/m^3]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -129,7 +129,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_viscosity_01">
           <property name="text">
-           <string>μ [kg/(m·s)] :</string>
+           <string>μ [kg/(m·s)]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -152,7 +152,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_length_01">
           <property name="text">
-           <string>L [m] :</string>
+           <string>L [m]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -175,7 +175,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_yplus_01">
           <property name="text">
-           <string>y+ :</string>
+           <string>y+</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -223,7 +223,7 @@
         <item row="6" column="0">
          <widget class="QLabel" name="label_Re_01">
           <property name="text">
-           <string>Re :</string>
+           <string>Re</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -246,7 +246,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="label_y1_01">
           <property name="text">
-           <string>y1 [m] :</string>
+           <string>y1 [m]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -282,7 +282,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_mass_02">
           <property name="text">
-           <string>m [kg] :</string>
+           <string>m [kg]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -305,7 +305,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_stiffness_02">
           <property name="text">
-           <string>k [N/m] :</string>
+           <string>k [N/m]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -328,7 +328,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_damping_02">
           <property name="text">
-           <string>c [N·s/m] :</string>
+           <string>c [N·s/m]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -364,7 +364,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_naturalfrequency_02">
           <property name="text">
-           <string>f_n [Hz] :</string>
+           <string>f_n [Hz]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -384,7 +384,7 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_period_02">
           <property name="text">
-           <string>T [s] :</string>
+           <string>T [s]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -404,7 +404,7 @@
         <item row="6" column="0">
          <widget class="QLabel" name="label_circlefrequency_02">
           <property name="text">
-           <string>ω_n [rad/s] :</string>
+           <string>ω_n [rad/s]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -424,7 +424,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="label_dampingratio_02">
           <property name="text">
-           <string>ζ :</string>
+           <string>ζ</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -448,16 +448,69 @@
         <string>Mach</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_03">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_gamma_03">
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="lineEdit_velocity_03">
           <property name="text">
-           <string>γ :</string>
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_Rg_03">
+          <property name="text">
+           <string>Rg [J·kg/K]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1" alignment="Qt::AlignHCenter">
+         <widget class="QPushButton" name="pushButton_calculate_03">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>计算</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="lineEdit_p_total_03">
+          <property name="text">
+           <string>101325.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_Ma_03">
+          <property name="text">
+           <string>1.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="lineEdit_T_total_03">
+          <property name="text">
+           <string>273.15</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -471,10 +524,30 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_Rg_03">
+        <item row="9" column="1">
+         <widget class="QLineEdit" name="lineEdit_T_static_03">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="label_T_static_03">
           <property name="text">
-           <string>Rg [J·kg/K] :</string>
+           <string>T [K]</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::PlainText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="0">
+         <widget class="QLabel" name="label_p_static_03">
+          <property name="text">
+           <string>p [Pa]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -494,10 +567,10 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_Ma_03">
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_velocity_03">
           <property name="text">
-           <string>Ma :</string>
+           <string>v [m/s]</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -507,102 +580,30 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_Ma_03">
-          <property name="text">
-           <string>1.0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_T_total_03">
-          <property name="text">
-           <string>T total [K] :</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_T_total_03">
-          <property name="text">
-           <string>273.15</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label_p_total_03">
-          <property name="text">
-           <string>p total [Pa] :</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit_p_total_03">
-          <property name="text">
-           <string>101325.0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="pushButton_calculate_03">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>计算</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label_soundspeed_03">
-          <property name="text">
-           <string>c [m/s] :</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLineEdit" name="lineEdit_soundspeed_03">
-          <property name="text">
-           <string/>
-          </property>
+        <item row="10" column="1">
+         <widget class="QLineEdit" name="lineEdit_p_static_03">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item row="7" column="0">
-         <widget class="QLabel" name="label_velocity_03">
+         <widget class="QLabel" name="label_soundspeed_03">
           <property name="text">
-           <string>v [m/s] :</string>
+           <string>c [m/s]</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::PlainText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_Ma_03">
+          <property name="text">
+           <string>Ma</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -613,7 +614,7 @@
          </widget>
         </item>
         <item row="7" column="1">
-         <widget class="QLineEdit" name="lineEdit_velocity_03">
+         <widget class="QLineEdit" name="lineEdit_soundspeed_03">
           <property name="text">
            <string/>
           </property>
@@ -622,10 +623,10 @@
           </property>
          </widget>
         </item>
-        <item row="8" column="0">
-         <widget class="QLabel" name="label_T_static_03">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_gamma_03">
           <property name="text">
-           <string>T [K] :</string>
+           <string>γ</string>
           </property>
           <property name="textFormat">
            <enum>Qt::PlainText</enum>
@@ -635,31 +636,32 @@
           </property>
          </widget>
         </item>
-        <item row="8" column="1">
-         <widget class="QLineEdit" name="lineEdit_T_static_03">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
+        <item row="3" column="0">
+         <widget class="QComboBox" name="comboBox_temperature_03">
+          <item>
+           <property name="text">
+            <string>T total [K]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>T static [K]</string>
+           </property>
+          </item>
          </widget>
         </item>
-        <item row="9" column="0">
-         <widget class="QLabel" name="label_p_static_03">
-          <property name="text">
-           <string>p [Pa] :</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="1">
-         <widget class="QLineEdit" name="lineEdit_p_static_03">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
+        <item row="4" column="0">
+         <widget class="QComboBox" name="comboBox_pressure_03">
+          <item>
+           <property name="text">
+            <string>p total [Pa]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>p static [Pa]</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>

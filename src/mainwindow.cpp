@@ -1,11 +1,9 @@
 #include "MainWindow.h"
 
+#include <QDebug>
 #include <QDoubleValidator>
 #include <cmath>
 #include <numbers>
-
-#include "qpushbutton.h"
-#include "qvalidator.h"
 
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
@@ -24,19 +22,30 @@ void MainWindow::initializeUI() {
     ui->lineEdit_viscosity_01->setValidator(new QDoubleValidator(this));
     ui->lineEdit_length_01->setValidator(new QDoubleValidator(this));
     ui->lineEdit_yplus_01->setValidator(new QDoubleValidator(this));
+
     connect(ui->pushButton_calculate_01, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_01_clicked);
 
     // set up page02
     ui->lineEdit_mass_02->setValidator(new QDoubleValidator(this));
     ui->lineEdit_stiffness_02->setValidator(new QDoubleValidator(this));
     ui->lineEdit_damping_02->setValidator(new QDoubleValidator(this));
+
     connect(ui->pushButton_calculate_02, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_02_clicked);
 
+    // set up page03
     ui->lineEdit_gamma_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_Rg_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_Ma_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_T_total_03->setValidator(new QDoubleValidator(this));
     ui->lineEdit_p_total_03->setValidator(new QDoubleValidator(this));
+
+    ui->label_p_static_03->setText(ui->comboBox_pressure_03->itemText(!ui->comboBox_pressure_03->currentIndex()));
+    ui->label_T_static_03->setText(ui->comboBox_temperature_03->itemText(!ui->comboBox_temperature_03->currentIndex()));
+
+    connect(ui->comboBox_pressure_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+            &MainWindow::comboBox_pressure_03_change);
+    connect(ui->comboBox_temperature_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+            &MainWindow::comboBox_temperature_03_change);
     connect(ui->pushButton_calculate_03, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_03_clicked);
 }
 
@@ -80,22 +89,49 @@ void MainWindow::pushbutton_caculate_02_clicked() {
     ui->lineEdit_dampingratio_02->setText(QString::number(damping_ratio, 'g', precision));
 }
 
+void MainWindow::comboBox_pressure_03_change(int i) {
+    this->ui->label_p_static_03->setText(this->ui->comboBox_pressure_03->itemText(!i));
+}
+
+void MainWindow::comboBox_temperature_03_change(int i) {
+    this->ui->label_T_static_03->setText(this->ui->comboBox_temperature_03->itemText(!i));
+}
+
 void MainWindow::pushbutton_caculate_03_clicked() {
     // input
     double gamma = ui->lineEdit_gamma_03->text().toDouble();
     double Rg = ui->lineEdit_Rg_03->text().toDouble();
     double Ma = ui->lineEdit_Ma_03->text().toDouble();
-    double T_total = ui->lineEdit_T_total_03->text().toDouble();
-    double p_total = ui->lineEdit_p_total_03->text().toDouble();
 
-    // calculate
-    double T_static = T_total / (1 + (gamma - 1.) / 2. * Ma * Ma);
-    double p_static = p_total / std::pow(1 + (gamma - 1.) / 2. * Ma * Ma, gamma / (gamma - 1.));
+    double T_input = ui->lineEdit_T_total_03->text().toDouble();
+    double T_static = 0., T_total = 0., T_output = 0.;
+    if (ui->comboBox_temperature_03->currentText().contains("total")) {
+        T_total = T_input;
+        T_static = T_total / (1 + (gamma - 1.) / 2. * Ma * Ma);
+        T_output = T_static;
+    } else {
+        T_static = T_input;
+        T_total = T_static * (1 + (gamma - 1.) / 2. * Ma * Ma);
+        T_output = T_total;
+    }
+    ui->lineEdit_T_static_03->setText(QString::number(T_output, 'g', precision));
+
+    double p_input = ui->lineEdit_p_total_03->text().toDouble();
+    double p_static = 0., p_total = 0., p_output = 0.;
+    if (ui->comboBox_pressure_03->currentText().contains("total")) {
+        p_total = p_input;
+        p_static = p_total / std::pow(1 + (gamma - 1.) / 2. * Ma * Ma, gamma / (gamma - 1.));
+        p_output = p_static;
+    } else {
+        p_static = p_input;
+        p_total = p_static * std::pow(1 + (gamma - 1.) / 2. * Ma * Ma, gamma / (gamma - 1.));
+        p_output = p_total;
+    }
+    ui->lineEdit_p_static_03->setText(QString::number(p_output, 'g', precision));
+
     double soundspeed = std::sqrt(gamma * Rg * T_static);
-    double velocity = Ma * soundspeed;
-    // output
-    ui->lineEdit_T_static_03->setText(QString::number(T_static, 'g', precision));
-    ui->lineEdit_p_static_03->setText(QString::number(p_static, 'g', precision));
     ui->lineEdit_soundspeed_03->setText(QString::number(soundspeed, 'g', precision));
+
+    double velocity = Ma * soundspeed;
     ui->lineEdit_velocity_03->setText(QString::number(velocity, 'g', precision));
 }
