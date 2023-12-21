@@ -53,6 +53,8 @@ void MainWindow::initializeUI() {
     ui->label_p_output_03->setText(ui->comboBox_p_input_03->itemText(!ui->comboBox_p_input_03->currentIndex()));
     ui->label_T_output_03->setText(ui->comboBox_T_input_03->itemText(!ui->comboBox_T_input_03->currentIndex()));
 
+    connect(ui->comboBox_gamma_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+            [this](int i) { this->ui->label_Cp_03->setText(qobject_cast<QComboBox*>(sender())->itemText(!i)); });
     connect(ui->comboBox_p_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
             [this](int i) { this->ui->label_p_output_03->setText(qobject_cast<QComboBox*>(sender())->itemText(!i)); });
     connect(ui->comboBox_T_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
@@ -133,10 +135,20 @@ void MainWindow::pushbutton_caculate_02_clicked() {
 }
 
 void MainWindow::pushbutton_caculate_03_clicked() {
-    // input
-    double gamma = ui->lineEdit_gamma_03->text().toDouble();
     double Rg = ui->lineEdit_Rg_03->text().toDouble();
     double Ma = ui->lineEdit_Ma_03->text().toDouble();
+
+    double gamma = 0., Cp = 0.;
+    if (ui->comboBox_gamma_03->currentText().contains("Cp")) {
+        Cp = ui->lineEdit_gamma_03->text().toDouble();
+        double tmp = Cp / Rg;
+        gamma = tmp / (tmp - 1.);
+        ui->lineEdit_Cp_03->setText(QString::number(gamma, 'g', precision));
+    } else {
+        gamma = ui->lineEdit_gamma_03->text().toDouble();
+        Cp = gamma / (gamma - 1.) * Rg;
+        ui->lineEdit_Cp_03->setText(QString::number(Cp, 'g', precision));
+    }
 
     double T_input = ui->lineEdit_T_input_03->text().toDouble();
     double T_static = 0., T_total = 0., T_output = 0.;
