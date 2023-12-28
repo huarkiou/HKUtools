@@ -43,8 +43,8 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <layout class="QGridLayout" name="gridLayout_mainwindow">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="font">
        <font>
@@ -54,7 +54,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage_01">
        <property name="sizePolicy">
@@ -723,6 +723,11 @@
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tabWidgetPage_04">
+       <attribute name="title">
+        <string>Sutherland</string>
+       </attribute>
       </widget>
      </widget>
     </item>
