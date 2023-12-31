@@ -60,6 +60,13 @@ void MainWindow::initializeUI() {
     connect(ui->comboBox_T_input_03, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
             [this](int i) { this->ui->label_T_output_03->setText(qobject_cast<QComboBox*>(sender())->itemText(!i)); });
     connect(ui->pushButton_calculate_03, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_03_clicked);
+
+    // set up page04
+    ui->lineEdit_viscosity0_04->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_T_04->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_T_susth_04->setValidator(new QDoubleValidator(this));
+    ui->lineEdit_S_susth_04->setValidator(new QDoubleValidator(this));
+    connect(ui->pushButton_calculate_04, &QPushButton::clicked, this, &MainWindow::pushbutton_caculate_04_clicked);
 }
 
 void MainWindow::pushbutton_caculate_01_clicked() {
@@ -181,4 +188,15 @@ void MainWindow::pushbutton_caculate_03_clicked() {
 
     double velocity = Ma * soundspeed;
     ui->lineEdit_velocity_03->setText(QString::number(velocity, 'g', precision));
+}
+
+void MainWindow::pushbutton_caculate_04_clicked() {
+    double mu0 = ui->lineEdit_viscosity0_04->text().toDouble();
+    double Tsusth = ui->lineEdit_T_susth_04->text().toDouble();
+    double Ssusth = ui->lineEdit_S_susth_04->text().toDouble();
+    double T = ui->lineEdit_T_04->text().toDouble();
+
+    double mu = mu0 * std::pow(T / Tsusth, 1.5) * (Tsusth + Ssusth) / (T + Ssusth);
+
+    ui->lineEdit_viscosity_04->setText(QString ::number(mu, 'g', precision));
 }

@@ -284,6 +284,9 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="4" column="0">
@@ -304,6 +307,9 @@
          <widget class="QLineEdit" name="lineEdit_mass_output_02">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -364,6 +370,9 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="8" column="0">
@@ -419,6 +428,9 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="2" column="1">
@@ -445,6 +457,9 @@
          <widget class="QLineEdit" name="lineEdit_circlefrequency_02">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -534,12 +549,18 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="11" column="1">
          <widget class="QLineEdit" name="lineEdit_T_output_03">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -636,6 +657,9 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="2" column="1">
@@ -683,6 +707,9 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="0" column="1">
@@ -720,6 +747,9 @@
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -730,12 +760,19 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="lineEdit_T_susth_04">
+          <property name="text">
+           <string>273</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="label_T_susth_04">
           <property name="text">
-           <string>Tsusth</string>
+           <string>Tsusth [K]</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -743,9 +780,9 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="label_S_susth_04">
           <property name="text">
-           <string>Ssusth</string>
+           <string>Ssusth [K]</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -753,9 +790,9 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="label_viscosity0_04">
           <property name="text">
-           <string>μ0</string>
+           <string>μ0 [kg/(m·s)]</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -763,13 +800,27 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="lineEdit_S_susth_04">
+          <property name="text">
+           <string>	 111</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
         </item>
         <item row="5" column="1">
-         <widget class="QLineEdit" name="lineEdit_4"/>
+         <widget class="QLineEdit" name="lineEdit_viscosity_04">
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
         <item row="4" column="1" alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushButton_calculate_04">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -782,12 +833,19 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="lineEdit_viscosity0_04">
+          <property name="text">
+           <string>1.716e-5</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
         </item>
         <item row="5" column="0">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="label_viscosity_04">
           <property name="text">
-           <string>μ</string>
+           <string>μ [kg/(m·s)]</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -795,9 +853,9 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="label_T_04">
           <property name="text">
-           <string>T</string>
+           <string>T [K]</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -805,7 +863,14 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="lineEdit_T_04">
+          <property name="text">
+           <string>288.15</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

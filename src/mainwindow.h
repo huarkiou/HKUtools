@@ -16,12 +16,14 @@ class MainWindow : public QMainWindow {
    private:
     void initializeUI();
 
-   private slots:
+   public:
     void pushbutton_caculate_01_clicked();
 
     void pushbutton_caculate_02_clicked();
 
     void pushbutton_caculate_03_clicked();
+
+    void pushbutton_caculate_04_clicked();
 
    private:
     Ui::MainWindowClass *ui;
